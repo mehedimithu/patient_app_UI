@@ -30,13 +30,13 @@ dependencies:
   cupertino_icons: ^1.0.2
   http:
   get:
-  firebase_auth: ^1.0.1
-  firebase_core: ^1.0.1
+  firebase_auth:
+  firebase_core:
   flutter_bloc: ^7.0.0
   equatable: ^2.0.0
-  drawer_swipe: ^0.0.4
+  drawer_swipe:
   animated_drawer: ^0.0.4
-  cloud_firestore: ^1.0.1
+  cloud_firestore:
 
 dev_dependencies:
   flutter_test:
