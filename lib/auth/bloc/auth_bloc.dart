@@ -6,16 +6,14 @@ import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:user_app/auth/login/repositories/login_repository.dart';
-import 'package:user_app/auth/signup/repositories/signup_repository.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   LoginRepo loginRepo;
-  SignupRepo signupRepo;
 
-  AuthBloc({this.loginRepo, this.signupRepo}) : super(AuthInitial());
+  AuthBloc({this.loginRepo}) : super(AuthInitial());
 
   @override
   Stream<AuthState> mapEventToState(
