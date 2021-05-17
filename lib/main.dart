@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:user_app/auth/login/ui/splash_screen.dart';
+import 'package:user_app/auth/signup/bloc/signup_bloc.dart';
 import 'package:user_app/auth/signup/signup.dart';
 
 import 'auth/bloc/auth_bloc.dart';
@@ -21,16 +22,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Colors.blue));
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'CCR APP',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: BlocProvider(
-        create: (context) => AuthBloc(),
-        child: WelcomePage(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AuthBloc(),
+        ),
+        BlocProvider(
+          create: (context) => SignupBloc(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'CCR APP',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: WelcomePage(),
       ),
     );
   }
