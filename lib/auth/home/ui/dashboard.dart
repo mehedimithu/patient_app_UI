@@ -9,9 +9,10 @@ class Dashboard extends StatelessWidget {
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: Colors.blue,
+      backgroundColor: Color(0xff00a3ff),
       appBar: AppBar(
         toolbarHeight: 120,
+        backgroundColor: Color(0xff00a3ff) ,
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),

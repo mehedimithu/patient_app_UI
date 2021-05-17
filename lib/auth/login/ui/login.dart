@@ -20,12 +20,11 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     loginBloc = BlocProvider.of<LoginBloc>(context);
     Size screenSize = MediaQuery.of(context).size;
-
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 60,
-          backgroundColor: Color(0xff00a3ff) ,
-      ),
+      // appBar: AppBar(
+      //   toolbarHeight: 60,
+      //     backgroundColor: Color(0xff00a3ff) ,
+      // ),
       body: Stack(
         children: [
           BlocListener<LoginBloc, LoginState>(

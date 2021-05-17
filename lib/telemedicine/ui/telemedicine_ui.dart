@@ -31,9 +31,10 @@ class _TelemedicineState extends State<Telemedicine>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: Color(0xff00a3ff),
       appBar: AppBar(
         toolbarHeight: 120,
+        backgroundColor: Color(0xff00a3ff),
         bottom: PreferredSize(
           preferredSize: Size(100, 20),
           child: Column(
