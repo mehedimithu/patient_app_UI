@@ -26,6 +26,7 @@ class _SignupPageState extends State<SignupPage> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 60,
+        backgroundColor: Color(0xff00a3ff) ,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 50),

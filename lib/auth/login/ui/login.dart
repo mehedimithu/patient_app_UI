@@ -22,6 +22,10 @@ class _LoginPageState extends State<LoginPage> {
     Size screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 60,
+          backgroundColor: Color(0xff00a3ff) ,
+      ),
       body: Stack(
         children: [
           BlocListener<LoginBloc, LoginState>(
