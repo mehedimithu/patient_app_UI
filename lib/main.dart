@@ -79,31 +79,46 @@ class _WelcomePageState extends State<WelcomePage> {
                 child: Column(
                   children: [
                     Container(
-                      child: Center(
-                          child: Text(
-                        "User APP",
-                        style: TextStyle(fontSize: 30, color: Colors.white),
-                      )),
+                      child: Text(
+                        "Patient App",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 26,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                     SizedBox(height: 60),
-                    RaisedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LoginPage()));
-                      },
-                      child: Text("Login Page"),
-                      color: Colors.redAccent,
-                    ),
-                    FlatButton(
+                    SizedBox(
+                      height: 60,
+                      width: 200,
+                      child: RaisedButton(
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SignupPage()));
+                                  builder: (context) => LoginPage()));
                         },
-                        child: Text("Create an account"))
+                        child: Center(child: Text("Login Here", style: TextStyle(color: Colors.white),)),
+                        color: Colors.redAccent,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    SizedBox(
+                      height: 60,
+                      width: 200,
+                      child: RaisedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignupPage()));
+                          },
+                          child: Text("Create an account"),
+                        color: Colors.greenAccent,
+                      ),
+                    ),
+
                   ],
                 ),
               ),
