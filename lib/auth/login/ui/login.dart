@@ -1,6 +1,9 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_app/auth/home/ui/dashboard.dart';
+import 'package:user_app/auth/login/bloc/login_bloc.dart';
+import 'package:user_app/auth/signup/signup.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -8,19 +11,48 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  LoginBloc loginBloc;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextInputType textInputType;
+
   @override
   Widget build(BuildContext context) {
+    loginBloc = BlocProvider.of<LoginBloc>(context);
     Size screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       body: Stack(
         children: [
+          BlocListener<LoginBloc, LoginState>(
+            listener: (context, state) {
+              if (state is LoginSucced) {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Dashboard()));
+              }
+            },
+            child: BlocBuilder<LoginBloc, LoginState>(
+              builder: (context, state) {
+                if (state is LoginLoading) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (state is LoginFaild) {
+                  return buildError(state.message);
+                } else if (state is LoginSucced) {
+                  emailController.text = '';
+                  passwordController.text = '';
+                  return Container();
+                }
+                return Container();
+              },
+            ),
+          ),
           Container(
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: Colors.white24,
               image: DecorationImage(
-                alignment: Alignment.topLeft,
-                image: AssetImage('assets/images/background.png'),
-                fit: BoxFit.fill,
+                alignment: Alignment.bottomCenter,
+                image: AssetImage('assets/icons/vector_7.png'),
+                fit: BoxFit.scaleDown,
               ),
             ),
             child: Padding(
@@ -29,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text('CCR User App',
-                      style: TextStyle(color: Colors.white, fontSize: 25)),
+                      style: TextStyle(color: Colors.black, fontSize: 25)),
                   Padding(
                     padding: EdgeInsets.only(top: 40),
                     child: Row(
@@ -39,26 +71,22 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         Flexible(
                           child: TextField(
+                            controller: emailController,
                             textAlign: TextAlign.start,
-                            style: TextStyle(color: Colors.white),
+                            keyboardType: TextInputType.emailAddress,
+                            style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(
-                              hintStyle: TextStyle(color: Colors.white),
-                              hintText: 'Enter your email',
-                              border: OutlineInputBorder(
-                                borderRadius: const BorderRadius.all(
-                                  const Radius.circular(10.0),
-                                ),
-                                borderSide: new BorderSide(
-                                  color: Colors.white,
-                                  width: 1.0,
-                                ),
-                              ),
+                              filled: true,
+                              hintStyle: TextStyle(color: Colors.black),
+                              hintText: 'Enter email',
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
                             ),
                           ),
                         ),
                         Padding(
                           padding: EdgeInsets.only(right: 20),
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -72,27 +100,23 @@ class _LoginPageState extends State<LoginPage> {
                         Flexible(
                           child: TextField(
                             obscureText: true,
-                            style: TextStyle(color: Colors.white),
+                            controller: passwordController,
+                            keyboardType: TextInputType.visiblePassword,
+                            style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(
-                              hintText: 'Enter your password',
-                              hintStyle: TextStyle(color: Colors.white),
+                              filled: true,
+                              hintText: 'Enter password',
+                              hintStyle: TextStyle(color: Colors.black),
                               suffixIcon:
-                                  Icon(Icons.visibility, color: Colors.white),
-                              border: OutlineInputBorder(
-                                borderRadius: const BorderRadius.all(
-                                  const Radius.circular(10.0),
-                                ),
-                                borderSide: new BorderSide(
-                                  color: Colors.white,
-                                  width: 1.0,
-                                ),
-                              ),
+                                  Icon(Icons.visibility, color: Colors.black),
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
                             ),
                           ),
                         ),
                         Padding(
                           padding: EdgeInsets.only(right: 20),
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -101,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                     width: screenSize.width,
                     child: Text(
                       'Forgot your password?',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.black),
                       textAlign: TextAlign.right,
                     ),
                   ),
@@ -117,10 +141,13 @@ class _LoginPageState extends State<LoginPage> {
                           padding: EdgeInsets.symmetric(horizontal: 20),
                           color: Colors.red,
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Dashboard()));
+                            loginBloc.add(LoginButtonWasPressed(
+                                email: emailController.text,
+                                password: passwordController.text));
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => Dashboard()));
                           },
                           child: Text(
                             'Login',
@@ -139,10 +166,13 @@ class _LoginPageState extends State<LoginPage> {
                             Text(
                               'Don\'t have an account? ',
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 16),
+                                  TextStyle(color: Colors.black, fontSize: 16),
                             ),
                             FlatButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) => SignupPage()));
+                              },
                               color: Colors.blue,
                               child: Text('Sign up',
                                   style: TextStyle(
@@ -161,6 +191,13 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget buildError(String message) {
+    return Text(
+      message,
+      style: TextStyle(color: Colors.red),
     );
   }
 }

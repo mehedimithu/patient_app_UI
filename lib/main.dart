@@ -2,11 +2,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+import 'package:user_app/auth/login/bloc/login_bloc.dart';
+import 'package:user_app/auth/login/repositories/login_repository.dart';
 import 'package:user_app/auth/login/ui/splash_screen.dart';
 import 'package:user_app/auth/signup/bloc/signup_bloc.dart';
 import 'package:user_app/auth/signup/signup.dart';
-
 import 'auth/bloc/auth_bloc.dart';
 import 'auth/login/ui/login.dart';
 
@@ -25,10 +25,13 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => AuthBloc(),
+          create: (context) => AuthBloc(loginRepo: LoginRepo()),
         ),
         BlocProvider(
-          create: (context) => SignupBloc(),
+          create: (context) => SignupBloc(loginRepo: LoginRepo()),
+        ),
+        BlocProvider(
+          create: (context) => LoginBloc(loginRepo: LoginRepo()),
         ),
       ],
       child: MaterialApp(
@@ -60,33 +63,51 @@ class _WelcomePageState extends State<WelcomePage> {
           return LoginPage();
         }
         return Scaffold(
-          body: Padding(
-            padding: const EdgeInsets.only(top: 300, left: 100, right: 100),
-            child: Column(
-              children: [
-                Text(
-                  'CCR User App',
-                  style: TextStyle(fontSize: 20),
+          body: Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    alignment: Alignment.topCenter,
+                    image: AssetImage('assets/images/background.png'),
+                    fit: BoxFit.fitWidth,
+                  ),
                 ),
-                SizedBox(height: 25),
-                RaisedButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LoginPage()));
-                  },
-                  child: Text("Go to Login Page "),
-                  color: Colors.redAccent,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 300, left: 120, right: 120),
+                child: Column(
+                  children: [
+                    Container(
+                      child: Center(
+                          child: Text(
+                        "User APP",
+                        style: TextStyle(fontSize: 30, color: Colors.white),
+                      )),
+                    ),
+                    SizedBox(height: 60),
+                    RaisedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginPage()));
+                      },
+                      child: Text("Login Page"),
+                      color: Colors.redAccent,
+                    ),
+                    FlatButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignupPage()));
+                        },
+                        child: Text("Create an account"))
+                  ],
                 ),
-                FlatButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignupPage()));
-                    },
-                    child: Text("Create an accunt"))
-              ],
-            ),
+              ),
+            ],
           ),
         );
       },

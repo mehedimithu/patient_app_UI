@@ -17,10 +17,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   Stream<LoginState> mapEventToState(
     LoginEvent event,
   ) async* {
-    if (event is SigninButtonWasPressed) {
+    if (event is LoginButtonWasPressed) {
       yield LoginLoading();
       try {
         var user = await loginRepo.login(event.email, event.password);
+        yield LoginSucced(user: user);
       } catch (e) {
         yield LoginFaild(message: e.toString());
       }
