@@ -46,7 +46,23 @@ class _NewCallState extends State<NewCall> {
           Padding(
             padding: const EdgeInsets.only(left: 8, bottom: 5, right: 8),
             child: Card(
-              child: TextField(),
+              child: TextField(
+                textAlign: TextAlign.start,
+                onChanged: (val) {},
+                decoration: InputDecoration(
+                  hintText: "Search",
+                  hintStyle: TextStyle(
+                    color: Colors.grey,
+                  ),
+                  prefixIcon: Icon(
+                    Icons.search,
+                    size: 30,
+                  ),
+                  focusedBorder: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                ),
+                enableSuggestions: true,
+              ),
             ),
           ),
           Padding(
@@ -72,9 +88,12 @@ class _NewCallState extends State<NewCall> {
                         ),
                         title: Text('Name of ${list[index]}'),
                         subtitle: Text('BMDC\nOncologist'),
-                        trailing: Image.asset(
-                          'assets/icons/img.png',
-                          fit: BoxFit.cover,
+                        trailing: InkWell(
+                          child: Image.asset(
+                            'assets/icons/img.png',
+                            fit: BoxFit.cover,
+                          ),
+                          onTap: (){},
                         ),
                       ),
                     );
