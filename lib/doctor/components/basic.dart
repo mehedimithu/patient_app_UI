@@ -38,6 +38,7 @@ class Basic extends StatelessWidget {
                   onChanged: (val) {},
                   decoration: InputDecoration(
                     labelText: "Name",
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
                     labelStyle: TextStyle( fontWeight: FontWeight.bold),
                     hintText: "Dr. Ruhul Amin",
                     hintStyle: TextStyle(
@@ -55,6 +56,7 @@ class Basic extends StatelessWidget {
                         onChanged: (val) {},
                         decoration: InputDecoration(
                           labelText: "Date of birth",
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
                           labelStyle: TextStyle( fontWeight: FontWeight.bold),
                           hintText: "5 Dec 1910",
                           hintStyle: TextStyle(
@@ -71,6 +73,7 @@ class Basic extends StatelessWidget {
                         onChanged: (val) {},
                         decoration: InputDecoration(
                           labelText: "Gender",
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
                           labelStyle: TextStyle( fontWeight: FontWeight.bold),
                           hintText: "Male",
                           hintStyle: TextStyle(
@@ -88,6 +91,7 @@ class Basic extends StatelessWidget {
                   onChanged: (val) {},
                   decoration: InputDecoration(
                     labelText: "Email",
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
                     labelStyle: TextStyle( fontWeight: FontWeight.bold),
                     hintText: "m@gmail.com",
                     hintStyle: TextStyle(
@@ -108,6 +112,7 @@ class Basic extends StatelessWidget {
                         decoration: InputDecoration(
                           labelText: "Total",
                           labelStyle: TextStyle( fontWeight: FontWeight.bold),
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
                           hintText: "12",
                           hintStyle: TextStyle(
                             color: Colors.grey,
@@ -123,6 +128,7 @@ class Basic extends StatelessWidget {
                         onChanged: (val) {},
                         decoration: InputDecoration(
                           labelText: "Male",
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
                           labelStyle: TextStyle( fontWeight: FontWeight.bold),
                           hintText: "7",
                           hintStyle: TextStyle(
@@ -139,6 +145,7 @@ class Basic extends StatelessWidget {
                         onChanged: (val) {},
                         decoration: InputDecoration(
                           labelText: "Female",
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
                           labelStyle: TextStyle( fontWeight: FontWeight.bold),
                           hintText: "5",
                           hintStyle: TextStyle(

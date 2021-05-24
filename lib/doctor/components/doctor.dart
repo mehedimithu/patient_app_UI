@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:user_app/auth/home/ui/dashboard.dart';
 import 'package:user_app/doctor/components/basic.dart';
 import 'package:user_app/doctor/components/clinical.dart';
 
@@ -49,14 +48,13 @@ class _DoctorState extends State<Doctor> with SingleTickerProviderStateMixin {
             ],
           ),
         ),
-        title: Text("Doctors"),
+        title: Text("Profile"),
         leading: Padding(
           padding: const EdgeInsets.all(4.0),
           child: IconButton(
             icon: Icon(Icons.arrow_back_ios),
             onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Dashboard()));
+              Navigator.pop(context);
             },
           ),
         ),
