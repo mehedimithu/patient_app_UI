@@ -55,8 +55,8 @@ class CallADoctor extends StatelessWidget {
               subtitle: Text('0171781286'),
               trailing: IconButton(
                 icon: CircleAvatar(
-                  radius: 15,
-                  backgroundImage: AssetImage('assets/icons/a.png'),
+                  radius: 20,
+                  backgroundImage: AssetImage('assets/icons/vector_6.png'),
                 ),
                 onPressed: () {},
               ),
