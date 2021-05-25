@@ -35,21 +35,7 @@ class Others extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TextField(
-                      textAlign: TextAlign.start,
-                      onChanged: (val) {},
-                      decoration: InputDecoration(
-                        labelText: "Name",
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        labelStyle: TextStyle( fontWeight: FontWeight.bold),
-                        hintText: "Dr. Ruhul Amin",
-                        hintStyle: TextStyle(
-                          color: Colors.grey,
-                        ),
-                        focusedBorder: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                      ),
-                    ),
+                  Text('Emergency Contact'),
                     Row(
                       children: [
                         Expanded(
@@ -57,10 +43,10 @@ class Others extends StatelessWidget {
                             textAlign: TextAlign.start,
                             onChanged: (val) {},
                             decoration: InputDecoration(
-                              labelText: "Date of birth",
+                              labelText: "Contact Name",
                               floatingLabelBehavior: FloatingLabelBehavior.always,
                               labelStyle: TextStyle( fontWeight: FontWeight.bold),
-                              hintText: "5 Dec 1910",
+                              hintText: "M. A Hasan",
                               hintStyle: TextStyle(
                                 color: Colors.grey,
                               ),
@@ -74,10 +60,10 @@ class Others extends StatelessWidget {
                             textAlign: TextAlign.start,
                             onChanged: (val) {},
                             decoration: InputDecoration(
-                              labelText: "Gender",
+                              labelText: "Contact Number",
                               floatingLabelBehavior: FloatingLabelBehavior.always,
                               labelStyle: TextStyle( fontWeight: FontWeight.bold),
-                              hintText: "Male",
+                              hintText: "01725173546",
                               hintStyle: TextStyle(
                                 color: Colors.grey,
                               ),
@@ -92,10 +78,10 @@ class Others extends StatelessWidget {
                       textAlign: TextAlign.start,
                       onChanged: (val) {},
                       decoration: InputDecoration(
-                        labelText: "Email",
+                        labelText: "Present Address",
                         floatingLabelBehavior: FloatingLabelBehavior.always,
                         labelStyle: TextStyle( fontWeight: FontWeight.bold),
-                        hintText: "m@gmail.com",
+                        hintText: "Dhaka",
                         hintStyle: TextStyle(
                           color: Colors.grey,
                         ),
@@ -103,8 +89,21 @@ class Others extends StatelessWidget {
                         enabledBorder: InputBorder.none,
                       ),
                     ),
-                    SizedBox(height: 6),
-                    Text("Patients"),
+                    TextField(
+                      textAlign: TextAlign.start,
+                      onChanged: (val) {},
+                      decoration: InputDecoration(
+                        labelText: "Permenant Address",
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        labelStyle: TextStyle( fontWeight: FontWeight.bold),
+                        hintText: "Dhaka",
+                        hintStyle: TextStyle(
+                          color: Colors.grey,
+                        ),
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                      ),
+                    ),
                     Row(
                       children: [
                         Expanded(
@@ -112,10 +111,10 @@ class Others extends StatelessWidget {
                             textAlign: TextAlign.start,
                             onChanged: (val) {},
                             decoration: InputDecoration(
-                              labelText: "Total",
+                              labelText: "Division",
                               labelStyle: TextStyle( fontWeight: FontWeight.bold),
                               floatingLabelBehavior: FloatingLabelBehavior.always,
-                              hintText: "12",
+                              hintText: "Dhaka",
                               hintStyle: TextStyle(
                                 color: Colors.grey,
                               ),
@@ -129,27 +128,10 @@ class Others extends StatelessWidget {
                             textAlign: TextAlign.start,
                             onChanged: (val) {},
                             decoration: InputDecoration(
-                              labelText: "Male",
+                              labelText: "District",
                               floatingLabelBehavior: FloatingLabelBehavior.always,
                               labelStyle: TextStyle( fontWeight: FontWeight.bold),
-                              hintText: "7",
-                              hintStyle: TextStyle(
-                                color: Colors.grey,
-                              ),
-                              focusedBorder: InputBorder.none,
-                              enabledBorder: InputBorder.none,
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: TextField(
-                            textAlign: TextAlign.start,
-                            onChanged: (val) {},
-                            decoration: InputDecoration(
-                              labelText: "Female",
-                              floatingLabelBehavior: FloatingLabelBehavior.always,
-                              labelStyle: TextStyle( fontWeight: FontWeight.bold),
-                              hintText: "5",
+                              hintText: "Dhaka",
                               hintStyle: TextStyle(
                                 color: Colors.grey,
                               ),
@@ -159,7 +141,60 @@ class Others extends StatelessWidget {
                           ),
                         ),
                       ],
-                    )
+                    ),
+                    TextField(
+                      textAlign: TextAlign.start,
+                      onChanged: (val) {},
+                      decoration: InputDecoration(
+                        labelText: "NID",
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        labelStyle: TextStyle( fontWeight: FontWeight.bold),
+                        hintText: "19809298204821984",
+                        hintStyle: TextStyle(
+                          color: Colors.grey,
+                        ),
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            textAlign: TextAlign.start,
+                            onChanged: (val) {},
+                            decoration: InputDecoration(
+                              labelText: "Diagnosis Type",
+                              labelStyle: TextStyle( fontWeight: FontWeight.bold),
+                              floatingLabelBehavior: FloatingLabelBehavior.always,
+                              hintText: "Cytopathology",
+                              hintStyle: TextStyle(
+                                color: Colors.grey,
+                              ),
+                              focusedBorder: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: TextField(
+                            textAlign: TextAlign.start,
+                            onChanged: (val) {},
+                            decoration: InputDecoration(
+                              labelText: "Diagnosis date",
+                              floatingLabelBehavior: FloatingLabelBehavior.always,
+                              labelStyle: TextStyle( fontWeight: FontWeight.bold),
+                              hintText: "23 Apr 2018",
+                              hintStyle: TextStyle(
+                                color: Colors.grey,
+                              ),
+                              focusedBorder: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
 

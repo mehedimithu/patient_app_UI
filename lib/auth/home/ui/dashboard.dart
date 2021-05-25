@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:user_app/doctor/components/doctor.dart';
 import 'package:user_app/doctor/doctor_list.dart';
+import 'package:user_app/history/history.dart';
 import 'package:user_app/profile/profile.dart';
 import 'package:user_app/telemedicine/ui/telemedicine_ui.dart';
 
@@ -100,7 +101,10 @@ class Dashboard extends StatelessWidget {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => History()));
+                        },
                         child: Card(
                           elevation: 5,
                           child: Container(
